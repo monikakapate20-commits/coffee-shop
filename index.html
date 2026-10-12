@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coffee-shop</title>
+    <style>
+        * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #faf6f0;
+      color: #302017;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #2b1b12;
+      color: white;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #e8b982;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: #e8b982;
+    }
+
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      padding: 60px 8%;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(25,15,10,.92),
+        rgba(25,15,10,.35)),
+        url("https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+.hero p {
+      font-size: 18px;
+      margin-bottom: 28px;
+      color: #f0e5d9;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #c58a52;
+      color: #21150e;
+      padding: 13px 25px;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      background: #e8b982;
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 75px 8%;
+      scroll-margin-top: 75px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #79695d;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .menu-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px #0000000d;
+      transition: .3s;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 10px 25px #00000018;
+    }
+
+    .menu-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .menu-info {
+      padding: 22px;
+    }
+
+    .menu-info h3 {
+      margin-bottom: 8px;
+    }
+
+    .menu-info p {
+      color: #79695d;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      color: #a15d2c;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .about {
+      background: #eee2d3;
+      text-align: center;
+    }
+
+    .about-content {
+      max-width: 750px;
+      margin: auto;
+    }
+
+    .about-content p {
+      margin: 15px 0 25px;
+      color: #655348;
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review-card {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px #0000000a;
+    }
+
+    .stars {
+      color: #d49a45;
+      margin-bottom: 10px;
+    }
+
+    .review-card h3 {
+      margin-top: 15px;
+    }
+
+    .contact {
+      text-align: center;
+      background: #eee2d3;
+    }
+
+    .contact p {
+      margin: 12px 0;
+    }
+
+    footer {
+      background: #2b1b12;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    footer span {
+      color: #e8b982;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav a {
+        margin: 0 7px;
+        font-size: 14px;
+      }
+
+      .menu-grid,
+      .reviews {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        min-height: 70vh;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .menu-grid,
+      .reviews {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 55px 6%;
+      }
+
+      .section-title h2 {
+        font-size: 29px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">☕ Bean & Brew</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Your Daily Dose of Happiness.</h1>
+      <p>
+        Discover the perfect cup of coffee, made with
+        freshly roasted beans and a whole lot of love.
+      </p>
+      <a href="#menu" class="btn">Explore Our Menu</a>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="section-title">
+      <h2>Our Special Menu</h2>
+      <p>Fresh flavors. Beautiful moments. Amazing coffee.</p>
+    </div>
+
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80"
+             alt="Creamy iced coffee">
+        <div class="menu-info">
+          <h3>Iced Coffee</h3>
+          <p>Chilled coffee with a smooth, refreshing taste.</p>
+          <span class="price">₹149</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=800&q=80"
+             alt="Fresh cappuccino">
+        <div class="menu-info">
+          <h3>Cappuccino</h3>
+          <p>Rich espresso topped with silky milk foam.</p>
+          <span class="price">₹129</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80"
+             alt="Fresh espresso coffee">
+        <div class="menu-info">
+          <h3>Espresso</h3>
+          <p>A bold, aromatic shot for coffee lovers.</p>
+          <span class="price">₹99</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=800&q=80"
+             alt="Latte coffee">
+        <div class="menu-info">
+          <h3>Cafe Latte</h3>
+          <p>Delicate espresso blended with steamed milk.</p>
+          <span class="price">₹139</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80"
+             alt="Hot coffee in a ceramic cup">
+        <div class="menu-info">
+          <h3>Mocha</h3>
+          <p>A delicious combination of coffee and chocolate.</p>
+          <span class="price">₹159</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
+             alt="Coffee and fresh pastries">
+        <div class="menu-info">
+          <h3>Coffee & Treats</h3>
+          <p>Pair your favorite coffee with a sweet treat.</p>
+          <span class="price">₹199</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-content">
+      <div class="section-title">
+        <h2>Our Story</h2>
+      </div>
+      <p>
+        At Bean & Brew, we believe great coffee brings people
+        together. We carefully select our beans and prepare
+        every cup with passion, creating a warm place where
+        friends meet and memories are made.
+      </p>
+      <a href="#contact" class="btn">Visit Our Cafe</a>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="section-title">
+      <h2>What Our Customers Say</h2>
+      <p>A little love from our coffee community.</p>
+    </div>
+
+    <div class="reviews">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Amazing coffee and a beautiful atmosphere.
+        My favorite place to relax!"</p>
+        <h3>Priya S.</h3>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"The cappuccino is fantastic. Friendly staff
+        and delicious drinks every time."</p>
+        <h3>Rahul M.</h3>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"A cozy little cafe with great coffee.
+        Perfect for meeting friends."</p>
+        <h3>Ananya K.</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="section-title">
+      <h2>Come Say Hello!</h2>
+      <p>Your next favorite cup is waiting for you.</p>
+    </div>
+
+    <p>📍 Address: Your Cafe Address, Pune, India</p>
+    <p>📞 Phone: +91 98765 43210</p>
+    <p>✉️ Email: hello@beanandbrew.com</p>
+    <p>🕒 Opening Hours: 9:00 AM – 9:00 PM</p>
+
+    <a href="mailto:hello@beanandbrew.com" class="btn">
+      Contact Us
+    </a>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> Bean & Brew.
+      Made with ☕ and love.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
+    
